@@ -31,39 +31,30 @@ async function run() {
       res.send(students);
     });
 
-
-    app.get('/stutent/:id', async (req, res) =>{
-        const id = req.params.id;
-        const query= {_id: ObjectId(id)}
-        const student= await studentCollection.findOne(query);
-        res.send(student)
-
-    })
-
+    app.get("/stutent/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const student = await studentCollection.findOne(query);
+      res.send(student);
+    });
 
     // POST
 
-    app.post('/student', async (req, res) =>{
-      const newStudent= req.body;
+    app.post("/student", async (req, res) => {
+      const newStudent = req.body;
       const result = await studentCollection.insertOne(newStudent);
-      res.send(result)
-    })
+      res.send(result);
+    });
 
     // DELETE
 
-    app.delete('/student/:id', async(req, res) =>{
+    app.delete("/student/:id", async (req, res) => {
       const id = req.params.id;
-      const query = {_id: ObjectId(id)}
-      const result = await studentCollection.deleteOne(query)
-      res.send(result)
+      const query = { _id: ObjectId(id) };
+      const result = await studentCollection.deleteOne(query);
+      res.send(result);
     });
-
-
-
-  } 
-  
-  finally {
-
+  } finally {
   }
 }
 
